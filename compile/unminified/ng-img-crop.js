@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Alex Kaul
  * License: MIT
  *
- * Generated at Friday, September 16th, 2016, 2:24:31 PM
+ * Generated at Friday, September 16th, 2016, 2:28:17 PM
  */
 (function() {
 'use strict';
@@ -1662,7 +1662,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
 
     this.setResultImageSize = function (size) {
       if (angular.isArray(size)) {
-          resImgSizeArray = size.slice();
+          resImgSize = size.slice();
           size = {
               w: parseInt(size[0].w, 10),
               h: parseInt(size[0].h, 10)

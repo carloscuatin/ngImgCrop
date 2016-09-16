@@ -295,7 +295,7 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
 
     this.setResultImageSize = function (size) {
       if (angular.isArray(size)) {
-          resImgSizeArray = size.slice();
+          resImgSize = size.slice();
           size = {
               w: parseInt(size[0].w, 10),
               h: parseInt(size[0].h, 10)
