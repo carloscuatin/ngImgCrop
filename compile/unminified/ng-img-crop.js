@@ -5,7 +5,7 @@
  * Copyright (c) 2016 Alex Kaul
  * License: MIT
  *
- * Generated at Friday, September 16th, 2016, 2:12:21 PM
+ * Generated at Friday, September 16th, 2016, 2:24:31 PM
  */
 (function() {
 'use strict';
@@ -1403,7 +1403,10 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
         maxCanvasDims=[300,300];
 
     // Result Image size
-    var resImgSize=200;
+    var resImgSize = {
+      w: 200,
+      h: 200
+    };
 
     // Result Image type
     var resImgFormat='image/png';
@@ -1535,8 +1538,8 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
       var temp_ctx, temp_canvas;
       temp_canvas = angular.element('<canvas></canvas>')[0];
       temp_ctx = temp_canvas.getContext('2d');
-      temp_canvas.width = resImgSize;
-      temp_canvas.height = resImgSize;
+      temp_canvas.width = resImgSize.w;
+      temp_canvas.height = resImgSize.h;
       if(image!==null){
         temp_ctx.drawImage(image, (theArea.getX()-theArea.getSize()/2)*(image.width/ctx.canvas.width), (theArea.getY()-theArea.getSize()/2)*(image.height/ctx.canvas.height), theArea.getSize()*(image.width/ctx.canvas.width), theArea.getSize()*(image.height/ctx.canvas.height), 0, 0, resImgSize, resImgSize);
       }
@@ -1795,7 +1798,7 @@ crop.directive('imgCrop', ['$timeout', 'cropHost', 'cropPubSub', function($timeo
       changeOnFly: '=',
       areaType: '@',
       areaMinSize: '=',
-      resultImageSize: '=',
+      resultImageSize: '=?',
       resultImageFormat: '@',
       resultImageQuality: '=',
 
