@@ -290,10 +290,38 @@ crop.factory('cropHost', ['$document', 'cropAreaCircle', 'cropAreaSquare', 'crop
       }
     };
 
-    this.setResultImageSize=function(size) {
-      size=parseInt(size,10);
-      if(!isNaN(size)) {
-        resImgSize=size;
+    this.setResultImageSize = function (size) {
+      if (angular.isArray(size)) {
+          resImgSizeArray = size.slice();
+          size = {
+              w: parseInt(size[0].w, 10),
+              h: parseInt(size[0].h, 10)
+          };
+          return;
+      }
+      if (angular.isUndefined(size)) {
+          return;
+      }
+      //allow setting of size to "selection" for mirroring selection's dimensions
+      if (angular.isString(size)) {
+          resImgSize = size;
+          return;
+      }
+      //allow scalar values for square-like selection shapes
+      if (angular.isNumber(size)) {
+          size = parseInt(size, 10);
+          size = {
+              w: size,
+              h: size
+          };
+      }
+      size = {
+          w: parseInt(size.w, 10),
+          h: parseInt(size.h, 10)
+      };
+      if (!isNaN(size.w) && !isNaN(size.h)) {
+          resImgSize = size;
+          drawScene();
       }
     };
 
